@@ -1,0 +1,22 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Client Encoding [SJIS]:
+ユーザー postgres のパスワード:
+
+SQL Shellで上記のようにパスワードを打って成功すれば、postgresSQLは起動成功か
+
+起動成功したら下記が表示される
+
+psql (17.5)
+"help"でヘルプを表示します。
+
+postgres=#
+
+=====================================================================================================================
+Supabaseなどのクラウドではなく、ローカル環境で PostgreSQL + Prisma Studio を使って操作する場合は
+PostgreSQLを起動させないとエラーが出る。
+✅ 【前提】
+Prisma Studio は DATABASE_URL（例: postgresql://user:password@localhost:5432/dbname）に基づいて PostgreSQL に接続します。
+======================================================================================================================

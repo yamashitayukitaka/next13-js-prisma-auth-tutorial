@@ -6,8 +6,14 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
+  // output   = "../app/generated/prisma"
 }
+
+//   output を指定した場合：
+// → そのディレクトリに @prisma/client のコードが生成される（デフォルトの代わりに）
+
+// output を指定しない場合：
+// → node_modules/@prisma/client に生成される（これが 通常推奨の形）
 
 datasource db {
   provider = "postgresql"
