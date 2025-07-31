@@ -104,6 +104,8 @@ const LoginModal = () => {
       <hr />
       {/* Googleログイン */}
       <Button outline label="Googleでログイン" icon={FcGoogle} onClick={() => signIn('google')} />
+      {/* signIn 関数は、NextAuth.js によって提供される関数で、ログイン処理を開始するために使用します。
+        この関数に「プロバイダー名」を文字列で渡すことで、対応する認証フローが実行されます。 */}
 
       {/* サインアップリンク */}
       <div className="mt-4 text-center">

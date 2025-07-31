@@ -4,7 +4,9 @@ import prisma from '@/app/lib/prisma'
 
 
 
-
+// ✅getCurrentUser は 「今ログインしているユーザーの詳細情報をデータベースから取得する」ための関数
+// ログイン状態を管理・判定する目的に使われる
+// 注）ログインの認証自体（アカウント情報を入力してDBと照合してログイン成功させる処理）ではない
 const getCurrentUser = async () => {
   try {
     // セッション情報取得
@@ -23,12 +25,12 @@ const getCurrentUser = async () => {
       return null
     }
 
-    // ログインユーザーのセッション情報のメールアドレスを取得
     const response = await prisma.user.findUnique({
       where: {
         email: session.user.email,
       },
     })
+    // セッションで取得できたuser.emailと同一値がデータベース内にあればそのuserテーブルの情報を取得する
 
     if (!response) {
       return null
@@ -42,3 +44,8 @@ const getCurrentUser = async () => {
 }
 
 export default getCurrentUser
+
+// ===============================================================
+// セッション情報=>一時的な保管に過ぎない情報（時間が過ぎれば消える）
+// DBに保管されたログイン情報=>永続的に保存された情報
+// ===============================================================

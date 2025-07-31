@@ -28,6 +28,7 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
       <div className="relative h-10 w-10 cursor-pointer" onClick={toggleOpen}>
         <Image
           src={currentUser?.image || '/default.png'}
+          // 論理和で最初のtruthyな値返す
           className="rounded-full object-cover"
           alt="avatar"
           fill
@@ -37,15 +38,20 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
       </div>
 
       {isOpen && (
+        // toggleOpen関数でisOpenがtrue falseに切り替えられ、trueの場合は
+        // &&以降が返る
         <div className="absolute right-0 z-10 w-40 overflow-hidden rounded-lg bg-white text-sm shadow-lg shadow-gray-100">
           <div className="cursor-pointer">
             {currentUser ? (
+
               <>
                 <MenuItem
                   label="プロフィール"
                   onClick={() => {
                     profileModal.onOpen()
                     setIsOpen(false)
+                    // 状態変数isOpenがfalseに切り替わるので
+                    // isOpen && (以降のJSXが消える
                   }}
                 />
                 <MenuItem
